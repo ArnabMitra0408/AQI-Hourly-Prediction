@@ -10,6 +10,7 @@ load_dotenv()
 
 json_data_path=os.getenv('json_aqi_data_path')
 csv_data_path=os.getenv('csv_aqi_data_path')
+csv_folder_path=os.getenv('csv_aqi_folder_path')
 
 if __name__=='__main__':
 
@@ -25,6 +26,12 @@ if __name__=='__main__':
     aqi=[]
     state_name=[]
     timestamp=[]
+    if os.path.exists(csv_folder_path):
+        print(f"{csv_folder_path} Folder Path Exists. Starting Data Parsing Now")
+    else:
+        os.makedirs(csv_folder_path)
+        print(f"{csv_folder_path} Folder Created: Starting Data Parsing")
+        
     for state in states:
         print(f"parsing {state} data")
         read_file_path=json_data_path+state+'.json'
