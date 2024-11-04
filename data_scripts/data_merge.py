@@ -28,7 +28,7 @@ if __name__=='__main__':
 
     Final_Data=pd.merge(aqi,weather,how='left',left_on=['timestamp','state'],right_on=['date','State'])
 
-    Final_Data=Final_Data[['timestamp','state','co', 'no', 'no2', 'o3', 'so2', 'pm2_5', 'pm10', 'nh3','temperature_2m',
+    Final_Data=Final_Data[['timestamp','aqi','state','co', 'no', 'no2', 'o3', 'so2', 'pm2_5', 'pm10', 'nh3','temperature_2m',
        'relative_humidity_2m', 'rain', 'wind_speed_10m', 'wind_direction_10m','soil_temperature_0_to_7cm', 'soil_moisture_0_to_7cm']].reset_index(drop=True)
     
     Final_Data.to_csv(final_data_path,index=False,header=True)
